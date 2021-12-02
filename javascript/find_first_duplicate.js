@@ -1,3 +1,5 @@
+// First is my brute force solution
+/*
 function findFirstDuplicate(arr) {
   let lastIndex = arr.length; 
   for (let i = 0; i < arr.length-1; i++){
@@ -15,7 +17,20 @@ function findFirstDuplicate(arr) {
     return arr[lastIndex]
   } 
 }
+*/
 
+// Second solution is shorter and cleaner, but just as slow because it still has nested loops 
+function findFirstDuplicate(arr){
+  let matches = [-1]
+  for (let i = arr.length - 1; i >= 0; i--){
+    for (let j = i-1; j >= 0; j--){
+      if (arr[i] == arr[j]){
+        matches.push(arr[i]);
+      }
+    }
+  }
+  return matches[matches.length-1]
+}
 
 
 if (require.main === module) {
